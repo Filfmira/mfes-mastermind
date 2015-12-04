@@ -1,0 +1,1 @@
+new Board("bryo", 12, ["mmmm", "bgbg", "ryry"])
