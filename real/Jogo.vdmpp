@@ -1,0 +1,67 @@
+class Jogo
+types
+	public String = Utilities`String;
+	
+values
+-- TODO Define values here
+
+instance variables
+	private tabuleiros : map String to Tabuleiro; -- um para cada equipa
+	inv card (dom tabuleiros) = 2;
+	
+operations
+	public Jogo : map String to seq1 of Cor`Cor * Championship ==> Jogo
+	Jogo (chaves, championship) == (
+
+		let {equipa1, equipa2} = dom chaves in
+			tabuleiros := {equipa1 |-> new Board(chaves(equipa2)),
+				equipa2 |-> new Board(chaves(equipa1))};
+
+		)
+	pre card (dom chaves) = 2 and
+		forall equipa in set dom chaves &
+			equipa in set championship.getTeams() and
+		forall solution in set rng chaves &
+			len solution = Board`attemptLength
+
+	post forall equipa in set (dom tabuleiros) &
+		let adversario = dom chaves \ {equipa} in
+			{tabuleiros(equipa).getChave()} = rng (adversario <: chaves);
+			--chave do tabuleiro da  minha equipa == chave gerada pelo adversario
+
+
+	-- Constructor needed to recreate a game from the information of a file
+	public Jogo : map String to Tabuleiro ==> Jogo
+	Jogo (tabuleirosFicheiro) ==
+		tabuleiros := tabuleirosFicheiro
+	pre card (dom tabuleirosFicheiro) = 2
+	post tabuleiros = tabuleirosFicheiro;
+
+
+
+	public getEquipas : () ==> set of String
+	getEquipas () == return dom tabuleiros
+	post RESULT = dom tabuleiros;
+
+
+	public getTabuleiroEquipa : String ==> Tabuleiro
+	getTabuleiroEquipa (equipa) == return tabuleiros(team)
+	post RESULT = tabuleiros(equipa);
+
+
+	public getTabuleiroAdversario : String ==> Tabuleiro
+	getTabuleiroAdversario (equipa) ==
+		let adversario in set (dom tabuleiros)\{equipa}
+		in
+		return tabuleiros(adversario)
+	pre equipa in set (dom tabuleiros)
+
+	post RESULT in set rng tabuleiros
+		and {RESULT} = rng ({equipa} <-: tabuleiros);
+		
+		
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Jogo

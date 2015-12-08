@@ -10,13 +10,13 @@ class Utilities
 				if a <= b then a
 				else b;
 
-		static public seqToStringColor: seq of (seq1 of Color`Color) * (seq1 of Color`Color -> String) -> String
+		static public seqToStringColor: seq of (seq1 of Cor`Cor) * (seq1 of Cor`Cor -> String) -> String
 		seqToStringColor (sequence, printer) ==
 			if sequence = [] then "[]"
 			else "[" ^ auxSeqToStringColor(sequence, printer) ^ "]";
 
 
-		static private auxSeqToStringColor : seq1 of (seq1 of Color`Color) * (seq1 of Color`Color -> String) -> String
+		static private auxSeqToStringColor : seq1 of (seq1 of Cor`Cor) * (seq1 of Cor`Cor -> String) -> String
 		auxSeqToStringColor (sequence, printer) ==
 			if len sequence = 1 then
 				printer(hd sequence)
@@ -24,7 +24,7 @@ class Utilities
 				printer(hd sequence) ^ ", " ^ auxSeqToStringColor(tl sequence, printer);
 
 
-		static private setToSeqColor : set of (seq1 of Color`Color) -> seq of (seq1 of Color`Color)
+		static private setToSeqColor : set of (seq1 of Cor`Cor) -> seq of (seq1 of Cor`Cor)
 		setToSeqColor (s) ==
 			if card s = 1 then
 				let x in set s in [x]
@@ -35,7 +35,7 @@ class Utilities
 		post forall element in set s & element in set elems RESULT;
 
 
-		static public setToStringColor : set of (seq1 of Color`Color) * (seq1 of Color`Color -> String) -> String
+		static public setToStringColor : set of (seq1 of Cor`Cor) * (seq1 of Cor`Cor -> String) -> String
 		setToStringColor(s, printer) ==
 			if s = {} then "{}"
 			else "{" ^ auxSeqToStringColor(setToSeqColor(s), printer) ^ "}";

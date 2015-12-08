@@ -1,0 +1,152 @@
+class Tabuleiro
+types
+	public String = Utilities`String;
+	
+values
+	public comprimentoChave : nat1 = 4;
+
+instance variables
+	private chave : seq1 of Cor`Cor;
+	inv len chave = comprimentoChave;
+	
+	private tentativas : seq of (seq1 of Cor`Cor) := [];
+		inv forall tentativa in set elems tentativas & len tentativa = comprimentoChave and
+			len tentativas <= maxNumeroTentativas;
+
+		private maxNumeroTentativas : nat1 := 9;
+	
+operations
+
+		public Tabuleiro : () ==> Tabuleiro
+		Tabuleiro() == (
+
+			chave := Cor`gerarSequenciaDeCores(comprimentoChave);
+			tentativas := [];
+
+		)
+		post len chave = comprimentoChave and tentativas = [];
+
+
+		public Tabuleiro : seq1 of Cor`Cor ==> Tabuleiro
+		Tabuleiro (chaveP) == (
+			chave := chaveP;
+			tentativas := [];
+		)
+		pre len chaveP = comprimentoChave
+		post chave = chaveP and tentativas = [];
+
+
+		-- Constructor needed to recreate a board from the information of a file
+		public Tabuleiro : seq1 of Cor`Cor * seq of (seq1 of Cor`Cor) ==> Tabuleiro
+		Tabuleiro (chaveP, tentativasP) == (
+			chave := chaveP;
+			tentativas := tentativasP;
+		)
+		pre len chaveP = comprimentoChave and
+			len tentativasP <= maxNumeroTentativas and
+			forall tentativa in set elems tentativasP & len tentativa = comprimentoChave
+
+		post chave = chaveP and
+			-- All elements of "attempts" need to be in the same position of the
+			-- elements of "savedAttempts"
+			numCoresSitioCerto[seq1 of Cor`Cor](tentativas, tentativasP) = len tentativas;
+
+
+
+		public numTentativasRestantes : () ==> nat
+			numTentativasRestantes () == return maxNumeroTentativas - len tentativas
+		pre (len tentativas) <= maxNumeroTentativas
+		post RESULT = maxNumeroTentativas - len tentativas;
+
+
+		public numTentativasFeitas : () ==> nat
+			numTentativasFeitas() == return len tentativas
+		post RESULT = len tentativas;
+
+
+		public fazerJogada : seq1 of Cor`Cor ==> ()
+			fazerJogada (tentativa) == tentativas := tentativas ^ [tentativa]
+		pre len tentativa = comprimentoChave and
+			not gameOver()
+		post tentativas = tentativas~ ^ [tentativa]; --tentativas~ -> (sql) OLD.tentativas
+
+
+		-- Return true if the correct code has been found
+		pure public isChaveEncontrada : () ==> bool
+			isChaveEncontrada () == return chave in set elems tentativas
+		post chave in set elems tentativas => RESULT = true;
+
+
+		pure public gameOver : () ==> bool
+			gameOver () == return isChaveEncontrada() or len tentativas = maxNumeroTentativas
+		post RESULT = (isChaveEncontrada() or len tentativas = maxNumeroTentativas);
+
+
+		public calcularCoresSitiosCertos : seq of Cor`Cor ==> nat
+			calcularCoresSitiosCertos (tentativa) ==
+				return numCoresSitioCerto[Cor`Cor](tentativa, chave)
+		pre len tentativa = len chave
+		post RESULT <= len chave;
+
+
+		public calcularCoresSitiosErrados : seq of Cor`Cor ==> nat
+			calcularCoresSitiosErrados (tentativa) ==
+			-- Just a temporary variable to hold the value of the sum expression
+			-- (see previous URL)
+				(dcl temp : nat := 0;
+					for all color in set Cor`Cores do
+						temp := temp +
+							Utilities`min(
+								numOcurrencias[Cor`Cor](chave, color),
+								numOcurrencias[Cor`Cor](tentativa, color));
+					return temp - calcularCoresSitiosCertos(tentativa);
+				)
+		pre len tentativa = len chave
+		post RESULT <= len chave;
+
+
+		public getChave : () ==> seq1 of Cor`Cor
+			getChave () == return chave
+		post RESULT = chave;
+
+
+		public getTentativas : () ==> seq of (seq1 of Cor`Cor)
+			getTentativas () == return tentativas
+		post RESULT = tentativas;
+
+
+		public getMaxNumeroTentativas: () ==> nat1
+			getMaxNumeroTentativas () == return maxNumeroTentativas
+		post RESULT = maxNumeroTentativas;
+
+
+functions
+		-- Return the number of elements in the sequence that are a match both
+		-- in value and in position. For example: [1,2,3,4,5] and [4,4,3,5,2]
+		-- only has one element that matches both in value and in position (the
+		-- element 3).
+		private numCoresSitioCerto[@T] : seq of @T * seq of @T -> nat
+			numCoresSitioCerto (firstSeq, secondSeq) ==
+				if firstSeq = [] then
+					0
+				elseif hd firstSeq = hd secondSeq then
+					1 + numCoresSitioCerto[@T](tl firstSeq, tl secondSeq)
+				else
+					numCoresSitioCerto[@T](tl firstSeq, tl secondSeq)
+			pre (len firstSeq) = (len secondSeq)
+			post firstSeq = [] => RESULT = 0;
+
+		-- Return the number of times the element appears in the sequence
+		private numOcurrencias[@T] : seq of @T * @T -> nat
+			numOcurrencias (sequence, element) ==
+				if sequence = [] then
+					0
+				elseif hd sequence = element then
+					1 + numOcurrencias[@T](tl sequence, element)
+				else
+					numOcurrencias[@T](tl sequence, element)
+			post sequence = [] => RESULT = 0;
+			
+traces
+-- TODO Define Combinatorial Test Traces here
+end Tabuleiro

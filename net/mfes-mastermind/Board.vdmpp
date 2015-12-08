@@ -146,8 +146,8 @@ class Board
 
 		private attemptsToString : () ==> String
 		attemptsToString () ==
-			return Utilities`seqToString(attempts,
-				lambda x : seq1 of Color`Color & "\"" ^ x ^ "\"");
+			return Utilities`seqToStringColor(attempts,
+				lambda x : String & "\"" ^ x ^ "\"");
 
 		private maxAttemptsToString : () ==> String
 		maxAttemptsToString () ==

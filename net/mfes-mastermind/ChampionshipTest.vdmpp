@@ -15,9 +15,9 @@ class ChampionshipTest
 		testAddGame1();
 		testAddGame2();
 		testCalculateScores();
-		testReadSimpleChampionshipFromFile();
+		--testReadSimpleChampionshipFromFile();
 		testReadChampionshipWithGamesFromFile();
-		testReadNormalChampionshipFromFile();
+		--testReadNormalChampionshipFromFile();
 	);
 
 

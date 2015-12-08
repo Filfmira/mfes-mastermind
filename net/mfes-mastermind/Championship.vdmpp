@@ -145,8 +145,7 @@ class Championship
 		-- Operators needed to write a Championship to a file
 		private teamsToString : () ==> String
 		teamsToString () ==
-			return Utilities`setToString(teams,
-				lambda x : String & "\"" ^ x ^ "\"");
+			return Utilities`setToStringString(teams,	lambda x : String & "\"" ^ x ^ "\"");
 
 		-- private gamesToString : () ==> String
 		-- gamesToString () ==

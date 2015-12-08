@@ -1,0 +1,34 @@
+class Cor
+types
+		public Cor = char
+		inv cor == cor in set {'a', 'b', 'c', 'd', 'e', 'f'};
+values
+-- TODO Define values here
+
+instance variables
+		static public Cores : set of Cor := {'a', 'b', 'c', 'd', 'e', 'f'};
+		
+operations		
+		static public gerarSequenciaDeCores: nat1 ==> seq1 of char
+		gerarSequenciaDeCores(tamanho) == (
+
+			if(tamanho = 1) then
+				return [corAleatoria()]
+			else
+				return [corAleatoria()] ^ gerarSequenciaDeCores(tamanho-1)
+
+		)
+		post len RESULT = tamanho and
+			forall color in set elems RESULT & color in set Cores;
+
+		static private corAleatoria: () ==> char
+		corAleatoria() == (
+			||(return 'a', return 'b', return 'c', return 'd', return 'e', return 'f');
+		)
+		post RESULT in set Cores;
+		
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Cor
