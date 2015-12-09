@@ -1,0 +1,70 @@
+class JogoTest is subclass of MyTestCase
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+
+	static public testTodos : () ==> ()
+		testTodos () == (
+			IO`println("#######################################");
+			IO`println("Testes Jogo:");
+			testConstrutor1();
+			testGetTabuleiroAdversario();
+			testGetTabuleiroEquipa();
+		);
+
+	static public testConstrutor1: () ==> ()
+		testConstrutor1 () ==
+		(
+			dcl tabuleiro1 : Tabuleiro := new Tabuleiro(['a', 'b', 'c', 'd']);
+			dcl tabuleiro2 : Tabuleiro := new Tabuleiro(['f', 'e', 'd', 'c']);
+			dcl jogo : Jogo := new Jogo({ 
+				"equipa1" |-> tabuleiro1,
+				"equipa2" |-> tabuleiro2
+				});
+			
+			assertEqual(2, card jogo.getEquipas());
+			assertEqual({"equipa1", "equipa2"}, jogo.getEquipas());
+			assertEqual(tabuleiro1, jogo.getTabuleiros()("equipa1"));
+			assertEqual(tabuleiro2, jogo.getTabuleiros()("equipa2"));
+			IO`println("Passou testConstrutor1");
+		);	
+		
+		static public testGetTabuleiroAdversario: () ==> ()
+		testGetTabuleiroAdversario () ==
+		(
+			dcl tabuleiro1 : Tabuleiro := new Tabuleiro(['a', 'b', 'c', 'd']);
+			dcl tabuleiro2 : Tabuleiro := new Tabuleiro(['f', 'e', 'd', 'c']);
+			dcl jogo : Jogo := new Jogo({ 
+				"equipa1" |-> tabuleiro1,
+				"equipa2" |-> tabuleiro2
+				});
+			
+			assertEqual(tabuleiro1, jogo.getTabuleiroAdversario("equipa2"));
+			assertEqual(tabuleiro2, jogo.getTabuleiroAdversario("equipa1"));
+			IO`println("Passou testGetTabuleiroAdversario");
+		);	
+		
+		static public testGetTabuleiroEquipa: () ==> ()
+		testGetTabuleiroEquipa () ==
+		(
+			dcl tabuleiro1 : Tabuleiro := new Tabuleiro(['a', 'b', 'c', 'd']);
+			dcl tabuleiro2 : Tabuleiro := new Tabuleiro(['f', 'e', 'd', 'c']);
+			dcl jogo : Jogo := new Jogo({ 
+				"equipa1" |-> tabuleiro1,
+				"equipa2" |-> tabuleiro2
+				});
+			
+			assertEqual(tabuleiro1, jogo.getTabuleiroEquipa("equipa1"));
+			assertEqual(tabuleiro2, jogo.getTabuleiroEquipa("equipa2"));
+			IO`println("Passou testGetTabuleiroEquipa");
+		);	
+
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end JogoTest

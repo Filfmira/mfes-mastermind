@@ -37,7 +37,9 @@ operations
 	pre card (dom tabuleirosFicheiro) = 2
 	post tabuleiros = tabuleirosFicheiro;
 
-
+	public getTabuleiros : () ==> map String to Tabuleiro
+	getTabuleiros () == return tabuleiros
+	post RESULT = tabuleiros;
 
 	public getEquipas : () ==> set of String
 	getEquipas () == return dom tabuleiros
