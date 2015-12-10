@@ -10,24 +10,21 @@ instance variables
 	inv card (dom tabuleiros) = 2;
 	
 operations
-	--public Jogo : map String to seq1 of Cor`Cor * Championship ==> Jogo
-	--Jogo (chaves, championship) == (
---
-	--	let {equipa1, equipa2} = dom chaves in
-	--		tabuleiros := {equipa1 |-> new Board(chaves(equipa2)),
-	--			equipa2 |-> new Board(chaves(equipa1))};
---
-	--	)
-	--pre card (dom chaves) = 2 and
-	--	forall equipa in set dom chaves &
-	--		equipa in set championship.getTeams() and
-	--	forall solution in set rng chaves &
-	--		len solution = Board`attemptLength
---
-	--post forall equipa in set (dom tabuleiros) &
-	--	let adversario = dom chaves \ {equipa} in
-	--		{tabuleiros(equipa).getChave()} = rng (adversario <: chaves);
-	--		--chave do tabuleiro da  minha equipa == chave gerada pelo adversario
+	public Jogo : map String to seq1 of Cor`Cor * Campeonato ==> Jogo
+	Jogo (chaves, campeonato) == (
+		let {equipa1, equipa2} = dom chaves in
+			tabuleiros := {equipa1 |-> new Tabuleiro(chaves(equipa2)),
+				equipa2 |-> new Tabuleiro(chaves(equipa1))};
+		)
+	pre card (dom chaves) = 2 and
+		forall equipa in set dom chaves &
+			equipa in set campeonato.getEquipas() and
+		forall chave in set rng chaves &
+			len chave = Tabuleiro`comprimentoChave
+	post forall equipa in set (dom tabuleiros) &
+		let adversario = dom chaves \ {equipa} in
+			{tabuleiros(equipa).getChave()} = rng (adversario <: chaves);
+			--chave do tabuleiro da  minha equipa == chave gerada pelo adversario
 
 
 	-- Constructor needed to recreate a game from the information of a file
@@ -41,7 +38,7 @@ operations
 	getTabuleiros () == return tabuleiros
 	post RESULT = tabuleiros;
 
-	public getEquipas : () ==> set of String
+	pure public getEquipas : () ==> set of String
 	getEquipas () == return dom tabuleiros
 	post RESULT = dom tabuleiros;
 

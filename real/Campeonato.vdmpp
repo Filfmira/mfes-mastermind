@@ -1,0 +1,166 @@
+class Campeonato
+types
+	public String = Utilities`String;
+	
+values
+-- TODO Define values here
+instance variables
+	private equipas : set of String;
+	inv card equipas >= 2 and (card equipas) mod 2 = 0; --numero par de equipas.
+
+	private jogos : set of Jogo := {};
+	inv forall jogo in set jogos & jogo.getEquipas() subset equipas;
+
+operations
+
+	public Campeonato: set of String ==> Campeonato
+	Campeonato(eqs) == (
+		equipas := eqs;
+	)
+	pre card eqs >= 2 and (card eqs) mod 2 = 0
+	post equipas = eqs;
+	
+	pure public getEquipas: () ==> set of String
+	getEquipas() == (
+		return equipas;
+	)
+	post RESULT = equipas;
+	
+	public getJogos: () ==> set of Jogo
+	getJogos() == (
+		return jogos;
+	)
+	post RESULT = jogos;
+	
+	public novoJogoAleatorio: String * String ==> Jogo
+	novoJogoAleatorio(equipa1, equipa2) == (
+
+		dcl jogo : Jogo := new Jogo(
+			{equipa1 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave),
+			 equipa2 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave)},
+			self);
+
+		jogos := jogos union {jogo};
+
+		return jogo;
+
+	)
+	pre {equipa1, equipa2} subset equipas and
+		{equipa1, equipa2} not in set getEquipasJogos()
+	post RESULT in set jogos;
+	
+	
+	public novoJogo : map String to (seq of Cor`Cor) ==> Jogo
+	novoJogo(chaves) == (
+
+		dcl g : Jogo := new Jogo(chaves, self);
+
+		jogos := jogos union {g};
+
+		return g;
+
+	)
+	pre dom chaves subset equipas and
+		dom chaves not in set getEquipasJogos() and
+		forall solution in set rng chaves & len solution = Tabuleiro`comprimentoChave
+	post RESULT in set jogos;
+	
+	
+	public adicionarEquipas : set of String ==> ()
+	adicionarEquipas(eqs) == (
+		equipas := equipas union eqs;
+	)
+	pre (eqs inter equipas = {}) and (card eqs) mod 2 = 0
+	post equipas = equipas~ union eqs;
+	
+	
+	-- em cada jogo, o jogador que está a tentar adivinhar
+	-- ganha tantos pontos, quantas tentativas não usou.
+	public getPontuacao : String ==> nat
+	getPontuacao (equipa) == (
+		dcl jogosFeitos : set of Jogo := jogosEquipa(equipa),
+			score : nat := 0;
+			
+			for tabuleiro in getTabuleirosJogados(jogosFeitos, equipa) do
+				score := score + Tabuleiro`maxNumeroTentativas - len tabuleiro.getTentativas();
+
+			return score;
+	)
+	pre equipa in set equipas;
+	
+	
+	-- recebe os jogos jogados por uma equipa
+	-- retorna os tabuleiros que lhe correspondem em cada jogo
+	public 	getTabuleirosJogados : set of Jogo * String ==> seq of Tabuleiro
+	getTabuleirosJogados (jogos, equipa) == (
+		dcl ret : seq of Tabuleiro := [] ;
+		let jogo in set jogos in 
+			ret := [jogo.getTabuleiroEquipa(equipa)] ^ ret;
+	
+		return ret;
+	)
+	pre equipa in set equipas and
+		forall jogo in set jogos & equipa in set jogo.getEquipas();
+	
+	
+	-- retorna pares de equipas que jogaram 
+	pure private getEquipasJogos: () ==> set of set of String
+	getEquipasJogos () ==
+		return {jogo.getEquipas() | jogo in set jogos}
+	post jogos = {} => RESULT = {};
+
+	--------------------------------------------
+	public jogosEquipa : String ==> set of Jogo
+	jogosEquipa (equipa) ==
+		return {jogo | jogo in set jogos & equipa in set jogo.getEquipas()}
+	post forall jogo in set RESULT
+		& equipa in set jogo.getEquipas();
+		
+	--------------------------------------------
+	public getTentativasVencedor : () ==> nat
+	getTentativasVencedor () == (
+		dcl pontuacoes : map String to nat := getPontuacoes();
+		dcl vencedor : map String to nat := maximumValue(pontuacoes);
+		let x in set dom vencedor in
+			return vencedor(x)
+	);
+
+	--------------------------------------------
+	public getPontuacoes : () ==> map String to nat
+	getPontuacoes () ==
+		return { equipa |-> getPontuacao(equipa) | equipa in set equipas };
+		
+	--------------------------------------------	
+	public getTentativasEquipa : String ==> nat
+	getTentativasEquipa (equipa) ==
+	(
+		dcl numTentativas : nat := 0;
+		let jogo in set jogosEquipa(equipa) in
+			numTentativas := numTentativas + jogo.getTabuleiroEquipa(equipa).numTentativasFeitas();
+		return numTentativas;
+	)
+	pre equipa in set equipas;
+	
+	--------------------------------------------	
+	private maximumValue : map String to nat ==> map String to nat  
+		maximumValue(mapa) == (
+			if card dom mapa = 1 then
+				return mapa
+			else
+				let x in set dom mapa in
+					let max = maximumValue({x} <-: mapa) in
+						let y in set rng max in
+							if mapa(x) > y then
+								return {x |-> mapa(x)}
+							else 
+								return max
+		)
+		pre card dom mapa <> 0;
+	
+	
+	
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end Campeonato

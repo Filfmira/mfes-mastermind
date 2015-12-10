@@ -13,7 +13,7 @@ instance variables
 		inv forall tentativa in set elems tentativas & len tentativa = comprimentoChave and
 			len tentativas <= maxNumeroTentativas;
 
-		private maxNumeroTentativas : nat1 := 9;
+	public static maxNumeroTentativas : nat1 := 9;
 	
 operations
 
@@ -105,7 +105,7 @@ operations
 		post RESULT <= len chave;
 
 
-		public getChave : () ==> seq1 of Cor`Cor
+		pure public getChave : () ==> seq1 of Cor`Cor
 			getChave () == return chave
 		post RESULT = chave;
 
