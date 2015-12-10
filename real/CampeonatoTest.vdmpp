@@ -1,0 +1,46 @@
+class CampeonatoTest is subclass of MyTestCase
+types
+-- TODO Define types here
+values
+-- TODO Define values here
+instance variables
+-- TODO Define instance variables here
+operations
+
+	static public testTodos : () ==> ()
+	testTodos () == (
+		IO`println("#######################################");
+		IO`println("Testes Campeonato:");
+		testConstrutor1();
+
+	);
+	
+	
+	static public testConstrutor1 : () ==> ()
+	testConstrutor1 () ==
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
+		dcl jogo : Jogo := campeonato.novoJogo(
+		 {
+		 		"Bandeira" |-> ['a', 'b', 'c', 'd'], 
+				"Mira" |-> ['f', 'e', 'd', 'c']
+			});
+			
+		dcl tabuleiro1 : Tabuleiro := jogo.getTabuleiroEquipa("Bandeira");
+		dcl tabuleiro2 : Tabuleiro := jogo.getTabuleiroEquipa("Mira");
+		
+		tabuleiro1.fazerJogada(['a', 'b', 'c', 'd']);
+		tabuleiro1.fazerJogada(['d', 'e', 'f', 'f']);
+		tabuleiro1.fazerJogada(['f', 'e', 'd', 'c']);
+		
+		tabuleiro2.fazerJogada(['a', 'b', 'c', 'd']);
+		
+		assertEqual(1, campeonato.getTentativasVencedor());
+		IO`println("Passou testConstrutor1");
+	);
+	
+functions
+-- TODO Define functiones here
+traces
+-- TODO Define Combinatorial Test Traces here
+end CampeonatoTest

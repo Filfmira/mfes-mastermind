@@ -10,6 +10,7 @@ operations
 		testTodos () == (
 			TabuleiroTest`testTodos();
 			JogoTest`testTodos();
+			CampeonatoTest`testTodos();
 		);
 functions
 -- TODO Define functiones here

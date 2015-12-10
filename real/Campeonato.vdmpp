@@ -21,10 +21,10 @@ operations
 	post equipas = eqs;
 	
 	pure public getEquipas: () ==> set of String
-	getEquipas() == (
-		return equipas;
-	)
+	getEquipas() ==
+		return equipas
 	post RESULT = equipas;
+
 	
 	public getJogos: () ==> set of Jogo
 	getJogos() == (
@@ -94,9 +94,8 @@ operations
 	public 	getTabuleirosJogados : set of Jogo * String ==> seq of Tabuleiro
 	getTabuleirosJogados (jogos, equipa) == (
 		dcl ret : seq of Tabuleiro := [] ;
-		let jogo in set jogos in 
-			ret := [jogo.getTabuleiroEquipa(equipa)] ^ ret;
-	
+		for all jogo in set jogos do
+			ret := [jogo.getTabuleiroEquipa(equipa)] ^ ret;	
 		return ret;
 	)
 	pre equipa in set equipas and
@@ -122,7 +121,7 @@ operations
 		dcl pontuacoes : map String to nat := getPontuacoes();
 		dcl vencedor : map String to nat := maximumValue(pontuacoes);
 		let x in set dom vencedor in
-			return vencedor(x)
+			return getTentativasEquipa(x)
 	);
 
 	--------------------------------------------
