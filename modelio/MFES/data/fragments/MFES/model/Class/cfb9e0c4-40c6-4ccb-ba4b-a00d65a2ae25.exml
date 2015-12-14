@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Set&lt;Jogo::String&gt;" version="3">
+  <DEPS>
+    <ID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+    <EXTID name="Set&lt;T&gt;" mc="Class" uid="f7050a99-ab9e-4afd-adf1-321cea8c4bda"/>
+    <EXTID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Set<Jogo::String>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="da959f71-7c2c-46ba-aac6-cde3e306d666"/>
+          <PID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="bc07753d-7fee-4e0b-b6cd-6de910f44fd4"/>
+                <PID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="4b4c1264-f968-4be3-8ba4-ccf21df797b2"/>
+                      <PID name="Set&lt;T&gt;" mc="Class" uid="f7050a99-ab9e-4afd-adf1-321cea8c4bda"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

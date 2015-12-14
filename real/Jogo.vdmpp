@@ -12,18 +12,18 @@ instance variables
 operations
 	public Jogo : map String to seq1 of Cor`Cor * Campeonato ==> Jogo
 	Jogo (chaves, campeonato) == (
-		let {equipa1, equipa2} = dom chaves in
-			tabuleiros := {equipa1 |-> new Tabuleiro(chaves(equipa2)),
-				equipa2 |-> new Tabuleiro(chaves(equipa1))};
+		let {jogador1, jogador2} = dom chaves in
+			tabuleiros := {jogador1 |-> new Tabuleiro(chaves(jogador2)),
+				jogador2 |-> new Tabuleiro(chaves(jogador1))};
 		)
 	pre card (dom chaves) = 2 and
-		forall equipa in set dom chaves &
-			equipa in set campeonato.getEquipas() and
+		forall jogador in set dom chaves &
+			jogador in set campeonato.getJogadores() and
 		forall chave in set rng chaves &
 			len chave = Tabuleiro`comprimentoChave
-	post forall equipa in set (dom tabuleiros) &
-		let adversario = dom chaves \ {equipa} in
-			{tabuleiros(equipa).getChave()} = rng (adversario <: chaves);
+	post forall jogador in set (dom tabuleiros) &
+		let adversario = dom chaves \ {jogador} in
+			{tabuleiros(jogador).getChave()} = rng (adversario <: chaves);
 			--chave do tabuleiro da  minha equipa == chave gerada pelo adversario
 
 
@@ -38,25 +38,25 @@ operations
 	getTabuleiros () == return tabuleiros
 	post RESULT = tabuleiros;
 
-	pure public getEquipas : () ==> set of String
-	getEquipas () == return dom tabuleiros
+	pure public getJogadores : () ==> set of String
+	getJogadores () == return dom tabuleiros
 	post RESULT = dom tabuleiros;
 
 
-	public getTabuleiroEquipa : String ==> Tabuleiro
-	getTabuleiroEquipa (equipa) == return tabuleiros(equipa)
-	post RESULT = tabuleiros(equipa);
+	public getTabuleiroJogador : String ==> Tabuleiro
+	getTabuleiroJogador (jogador) == return tabuleiros(jogador)
+	post RESULT = tabuleiros(jogador);
 
 
 	public getTabuleiroAdversario : String ==> Tabuleiro
-	getTabuleiroAdversario (equipa) ==
-		let adversario in set (dom tabuleiros)\{equipa}
+	getTabuleiroAdversario (jogador) ==
+		let adversario in set (dom tabuleiros)\{jogador}
 		in
 		return tabuleiros(adversario)
-	pre equipa in set (dom tabuleiros)
+	pre jogador in set (dom tabuleiros)
 
 	post RESULT in set rng tabuleiros
-		and {RESULT} = rng ({equipa} <-: tabuleiros);
+		and {RESULT} = rng ({jogador} <-: tabuleiros);
 		
 		
 functions

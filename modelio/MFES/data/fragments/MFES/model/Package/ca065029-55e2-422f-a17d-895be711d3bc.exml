@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="mfes" version="3">
+  <DEPS>
+    <ID name="mfes" mc="Package" uid="ca065029-55e2-422f-a17d-895be711d3bc"/>
+    <COMPID name="Adicionar Equipas" mc="UseCase" uid="7e2c674e-e6dc-47ed-9b75-f8b7be92b7b6"/>
+    <COMPID name="Adicionar Jogo" mc="UseCase" uid="e6178c45-35a0-4a10-bb13-fd036d39577d"/>
+    <COMPID name="Basic VDM Types" mc="Package" uid="efdcc0fe-d2b9-42ed-b6f0-d81e876ad5f0"/>
+    <COMPID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <COMPID name="Campeonato" mc="Class" uid="951f7ac9-13a7-4c58-9ee8-1ba50ceef9c7"/>
+    <COMPID name="CampeonatoTest" mc="Class" uid="047a4848-7ff6-4f97-8de4-9bfb0c58bc63"/>
+    <COMPID name="Composite VDM Types" mc="Package" uid="f9c360a4-923d-4b6c-8763-73c2b1070108"/>
+    <COMPID name="Cor" mc="Class" uid="ac8f56bb-bd67-4e3a-80ee-2d0299692781"/>
+    <COMPID name="Criar Campeonato" mc="UseCase" uid="4c384447-8457-4e2f-a199-34ea1c1cf2e7"/>
+    <COMPID name="Determinar Vencedor" mc="UseCase" uid="990dc654-d8ca-4b3e-b39e-ec262a01e0dc"/>
+    <COMPID name="Fazer Jogada" mc="UseCase" uid="6ef2fca7-85b8-49c1-a0da-9935b16bbffc"/>
+    <COMPID name="Gerir Campeonato" mc="UseCase" uid="2be9b997-730a-40ff-8d07-2b7586dd4ca7"/>
+    <COMPID name="IO" mc="Class" uid="d4b8b216-0fc8-4eb0-a3c9-9c977cc446ff"/>
+    <COMPID name="Jogador" mc="Actor" uid="ebf3e2c4-2af9-4ebc-8d5f-9b12ad2f5890"/>
+    <COMPID name="Jogar Jogo" mc="UseCase" uid="29e8586c-c65b-4e17-89ad-9c0fea9b5e11"/>
+    <COMPID name="Jogo" mc="Class" uid="2cb3e47c-2eea-4d61-82f0-58eaa4bfe1ef"/>
+    <COMPID name="JogoTest" mc="Class" uid="aadff4b7-37e1-4d95-b335-c1de0c65b63b"/>
+    <COMPID name="MainTest" mc="Class" uid="2a155a6a-509b-497f-a543-46ba23aa7e47"/>
+    <COMPID name="MyTestCase" mc="Class" uid="f2c6df94-21de-4c09-9481-64ce9d637e1a"/>
+    <COMPID name="Organizador" mc="Actor" uid="809d71f9-77a5-484d-a463-c20e23416282"/>
+    <COMPID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+    <COMPID name="TabuleiroTest" mc="Class" uid="809518e3-1d20-41f0-b573-2acb8e7dd4d3"/>
+    <COMPID name="Utilities" mc="Class" uid="eff44d76-1037-4568-b1b1-93a822c2461c"/>
+    <COMPID name="mfes Use Case diagram" mc="UseCaseDiagram" uid="250a1378-e62e-4c67-8b1a-11a768a6a3e8"/>
+    <COMPID name="overview diagram" mc="ClassDiagram" uid="6e747560-d42d-473e-915a-399e8b0f9dbc"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="mfes" mc="Package" uid="ca065029-55e2-422f-a17d-895be711d3bc"/>
+    <PID name="MFES" mc="Project" uid="54958278-fd21-424c-b3e9-a20e58a3e029"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[mfes]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Campeonato" mc="Class" uid="951f7ac9-13a7-4c58-9ee8-1ba50ceef9c7"/>
+        <COMPID name="CampeonatoTest" mc="Class" uid="047a4848-7ff6-4f97-8de4-9bfb0c58bc63"/>
+        <COMPID name="Cor" mc="Class" uid="ac8f56bb-bd67-4e3a-80ee-2d0299692781"/>
+        <COMPID name="Jogo" mc="Class" uid="2cb3e47c-2eea-4d61-82f0-58eaa4bfe1ef"/>
+        <COMPID name="JogoTest" mc="Class" uid="aadff4b7-37e1-4d95-b335-c1de0c65b63b"/>
+        <COMPID name="MainTest" mc="Class" uid="2a155a6a-509b-497f-a543-46ba23aa7e47"/>
+        <COMPID name="MyTestCase" mc="Class" uid="f2c6df94-21de-4c09-9481-64ce9d637e1a"/>
+        <COMPID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+        <COMPID name="TabuleiroTest" mc="Class" uid="809518e3-1d20-41f0-b573-2acb8e7dd4d3"/>
+        <COMPID name="Utilities" mc="Class" uid="eff44d76-1037-4568-b1b1-93a822c2461c"/>
+        <COMPID name="IO" mc="Class" uid="d4b8b216-0fc8-4eb0-a3c9-9c977cc446ff"/>
+        <COMPID name="Composite VDM Types" mc="Package" uid="f9c360a4-923d-4b6c-8763-73c2b1070108"/>
+        <COMPID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+        <COMPID name="Basic VDM Types" mc="Package" uid="efdcc0fe-d2b9-42ed-b6f0-d81e876ad5f0"/>
+        <COMPID name="Jogador" mc="Actor" uid="ebf3e2c4-2af9-4ebc-8d5f-9b12ad2f5890"/>
+        <COMPID name="Jogar Jogo" mc="UseCase" uid="29e8586c-c65b-4e17-89ad-9c0fea9b5e11"/>
+        <COMPID name="Fazer Jogada" mc="UseCase" uid="6ef2fca7-85b8-49c1-a0da-9935b16bbffc"/>
+        <COMPID name="Organizador" mc="Actor" uid="809d71f9-77a5-484d-a463-c20e23416282"/>
+        <COMPID name="Gerir Campeonato" mc="UseCase" uid="2be9b997-730a-40ff-8d07-2b7586dd4ca7"/>
+        <COMPID name="Adicionar Jogo" mc="UseCase" uid="e6178c45-35a0-4a10-bb13-fd036d39577d"/>
+        <COMPID name="Adicionar Equipas" mc="UseCase" uid="7e2c674e-e6dc-47ed-9b75-f8b7be92b7b6"/>
+        <COMPID name="Determinar Vencedor" mc="UseCase" uid="990dc654-d8ca-4b3e-b39e-ec262a01e0dc"/>
+        <COMPID name="Criar Campeonato" mc="UseCase" uid="4c384447-8457-4e2f-a199-34ea1c1cf2e7"/>
+      </COMP>
+      <COMP relation="Product">
+        <COMPID name="overview diagram" mc="ClassDiagram" uid="6e747560-d42d-473e-915a-399e8b0f9dbc"/>
+        <COMPID name="mfes Use Case diagram" mc="UseCaseDiagram" uid="250a1378-e62e-4c67-8b1a-11a768a6a3e8"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

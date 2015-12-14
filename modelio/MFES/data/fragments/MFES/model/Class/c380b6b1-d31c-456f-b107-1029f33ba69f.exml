@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Map&lt;Jogo::String,Tabuleiro&gt;" version="3">
+  <DEPS>
+    <ID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+    <EXTID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+    <EXTID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+    <EXTID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Map<Jogo::String,Tabuleiro>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="885d2c8f-4ace-49e6-b7fd-0d571e576e1f"/>
+          <PID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="1b6140ee-3460-425c-b987-7601900fe3dd"/>
+                <PID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="52818659-0bd5-4947-b4d3-bfbe98f50a53"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="1745e883-e0af-43be-a82b-b58d9537ed6e"/>
+                <PID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="9359ffa5-9f68-4f4a-98f3-1d9b35cd7aec"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

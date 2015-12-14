@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" version="3">
+  <DEPS>
+    <ID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+    <EXTID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+    <EXTID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+    <EXTID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Map<Jogo::String,Seq<Cor::Cor>>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="1c7d9ec9-ab9f-4983-ab27-fd18024662e5"/>
+          <PID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="9ada36a0-d48e-4270-83cb-c2d8127ea7ef"/>
+                <PID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="String" mc="Class" uid="13fe30b2-f992-4b30-829b-2c73983cb554"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="52818659-0bd5-4947-b4d3-bfbe98f50a53"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="324d1536-63c6-4987-a5b4-f6d47b1b4d00"/>
+                <PID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="9359ffa5-9f68-4f4a-98f3-1d9b35cd7aec"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

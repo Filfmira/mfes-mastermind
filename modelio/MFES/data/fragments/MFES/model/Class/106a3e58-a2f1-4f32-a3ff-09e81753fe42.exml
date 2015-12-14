@@ -1,0 +1,80 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Map&lt;Campeonato::String,nat&gt;" version="3">
+  <DEPS>
+    <ID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+    <EXTID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+    <EXTID name="String" mc="Class" uid="cd7df359-aa7a-454b-bc58-96aba83bbbf8"/>
+    <EXTID name="nat" mc="DataType" uid="88718d7c-517e-48d4-9f1c-0673a38b3ac2"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Map<Campeonato::String,nat>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="2507f758-232e-466a-9b9d-bc35c339352e"/>
+          <PID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="3c35a4f7-86d6-478d-a1da-5e109f421ef8"/>
+                <PID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="String" mc="Class" uid="cd7df359-aa7a-454b-bc58-96aba83bbbf8"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="52818659-0bd5-4947-b4d3-bfbe98f50a53"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="c7cf7cfc-050d-4838-bd46-566d079898cd"/>
+                <PID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="nat" mc="DataType" uid="88718d7c-517e-48d4-9f1c-0673a38b3ac2"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="9359ffa5-9f68-4f4a-98f3-1d9b35cd7aec"/>
+                      <PID name="Map&lt;D,R&gt;" mc="Class" uid="58dc9b25-a54b-4524-b646-3059075ecaaf"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

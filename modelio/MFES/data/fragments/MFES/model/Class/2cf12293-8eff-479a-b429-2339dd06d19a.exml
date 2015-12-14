@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" version="3">
+  <DEPS>
+    <ID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+    <EXTID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+    <EXTID name="Seq&lt;T&gt;" mc="Class" uid="0eb5bd9e-42e4-41d3-a1d4-3a86d8648af9"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Seq<Seq<Cor::Cor>>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="89b9b71b-b499-40fc-93d5-49d0de0aa92b"/>
+          <PID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="c18726a2-b975-4002-8263-c13ec7196bfe"/>
+                <PID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="2c14674b-31e5-4706-8ba7-99ca67653dca"/>
+                      <PID name="Seq&lt;T&gt;" mc="Class" uid="0eb5bd9e-42e4-41d3-a1d4-3a86d8648af9"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

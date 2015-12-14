@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Binding classes" version="3">
+  <DEPS>
+    <ID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <COMPID name="Map&lt;Campeonato::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="44de39a9-eda6-41e5-b233-90abd3bc3248"/>
+    <COMPID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+    <COMPID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+    <COMPID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+    <COMPID name="Optional&lt;IO::filedirective&gt;" mc="Class" uid="17c7f087-c83f-4944-8292-fa322b7b9150"/>
+    <COMPID name="Optional&lt;p&gt;" mc="Class" uid="a7e4c56d-f9e9-4969-a148-79737b8202d4"/>
+    <COMPID name="Product&lt;bool,Optional&lt;p&gt;&gt;" mc="Class" uid="90c53a3e-952a-4c78-995b-5b437e386f70"/>
+    <COMPID name="Seq&lt;Any&gt;" mc="Class" uid="afcb7e18-61c2-4a9c-84b7-8b0da233f093"/>
+    <COMPID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+    <COMPID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+    <COMPID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+    <COMPID name="Seq&lt;char&gt;" mc="Class" uid="c0b52a0f-580a-42ea-85bb-4b4932b73fbf"/>
+    <COMPID name="Set&lt;Campeonato::String&gt;" mc="Class" uid="97b08860-4336-49f6-9c34-d12834553b3c"/>
+    <COMPID name="Set&lt;Cor::Cor&gt;" mc="Class" uid="cb604e63-bc5b-4e6e-a487-fba770f2fd54"/>
+    <COMPID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+    <COMPID name="Set&lt;Jogo&gt;" mc="Class" uid="eb220f6f-66d1-4b41-8b0b-78f40d7cded6"/>
+    <COMPID name="Set&lt;Set&lt;Campeonato::String&gt;&gt;" mc="Class" uid="d8113c44-9d2d-4d55-98a0-cf79a9ac503d"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <PID name="mfes" mc="Package" uid="ca065029-55e2-422f-a17d-895be711d3bc"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Binding classes]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="Seq&lt;char&gt;" mc="Class" uid="c0b52a0f-580a-42ea-85bb-4b4932b73fbf"/>
+        <COMPID name="Set&lt;Campeonato::String&gt;" mc="Class" uid="97b08860-4336-49f6-9c34-d12834553b3c"/>
+        <COMPID name="Set&lt;Jogo&gt;" mc="Class" uid="eb220f6f-66d1-4b41-8b0b-78f40d7cded6"/>
+        <COMPID name="Map&lt;Campeonato::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="44de39a9-eda6-41e5-b233-90abd3bc3248"/>
+        <COMPID name="Seq&lt;Cor::Cor&gt;" mc="Class" uid="ce618c71-fb05-475e-b8a4-a3cc426553c7"/>
+        <COMPID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+        <COMPID name="Set&lt;Set&lt;Campeonato::String&gt;&gt;" mc="Class" uid="d8113c44-9d2d-4d55-98a0-cf79a9ac503d"/>
+        <COMPID name="Map&lt;Campeonato::String,nat&gt;" mc="Class" uid="106a3e58-a2f1-4f32-a3ff-09e81753fe42"/>
+        <COMPID name="Set&lt;Cor::Cor&gt;" mc="Class" uid="cb604e63-bc5b-4e6e-a487-fba770f2fd54"/>
+        <COMPID name="Map&lt;Jogo::String,Tabuleiro&gt;" mc="Class" uid="c380b6b1-d31c-456f-b107-1029f33ba69f"/>
+        <COMPID name="Map&lt;Jogo::String,Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="a19a48c7-eaa3-4b64-b9af-6274d75e8e0e"/>
+        <COMPID name="Set&lt;Jogo::String&gt;" mc="Class" uid="cfb9e0c4-40c6-4ccb-ba4b-a00d65a2ae25"/>
+        <COMPID name="Seq&lt;Seq&lt;Cor::Cor&gt;&gt;" mc="Class" uid="2cf12293-8eff-479a-b429-2339dd06d19a"/>
+        <COMPID name="Product&lt;bool,Optional&lt;p&gt;&gt;" mc="Class" uid="90c53a3e-952a-4c78-995b-5b437e386f70"/>
+        <COMPID name="Optional&lt;p&gt;" mc="Class" uid="a7e4c56d-f9e9-4969-a148-79737b8202d4"/>
+        <COMPID name="Optional&lt;IO::filedirective&gt;" mc="Class" uid="17c7f087-c83f-4944-8292-fa322b7b9150"/>
+        <COMPID name="Seq&lt;Any&gt;" mc="Class" uid="afcb7e18-61c2-4a9c-84b7-8b0da233f093"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

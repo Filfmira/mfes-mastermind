@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Seq&lt;Tabuleiro&gt;" version="3">
+  <DEPS>
+    <ID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+    <EXTID name="Seq&lt;T&gt;" mc="Class" uid="0eb5bd9e-42e4-41d3-a1d4-3a86d8648af9"/>
+    <EXTID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+    <PID name="Binding classes" mc="Package" uid="56e1f2ad-47a3-465a-a2e0-46c9d0fadfa0"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Seq<Tabuleiro>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="TemplateInstanciation">
+        <OBJECT>
+          <ID name="" mc="TemplateBinding" uid="42d411e4-d1ad-4daf-a816-a850af8ef1a5"/>
+          <PID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+          <ATTRIBUTES>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <COMP relation="ParameterSubstitution">
+              <OBJECT>
+                <ID name="" mc="TemplateParameterSubstitution" uid="2e1a90a2-be4e-4853-9853-c98aec0b22aa"/>
+                <PID name="Seq&lt;Tabuleiro&gt;" mc="Class" uid="70f19aee-28ca-4252-8ac5-4900a06e8131"/>
+                <ATTRIBUTES>
+                  <ATT name="Value"></ATT>
+                  <ATT name="Name"></ATT>
+                  <ATT name="status">1970354901745664</ATT>
+                </ATTRIBUTES>
+                <DEPENDENCIES>
+                  <LINK relation="Actual">
+                    <ID name="Tabuleiro" mc="Class" uid="0641f0cc-ffdd-4306-9a67-339b8b9cca23"/>
+                  </LINK>
+                  <LINK relation="FormalParameter">
+                    <REFOBJ>
+                      <ID name="" mc="TemplateParameter" uid="2c14674b-31e5-4706-8ba7-99ca67653dca"/>
+                      <PID name="Seq&lt;T&gt;" mc="Class" uid="0eb5bd9e-42e4-41d3-a1d4-3a86d8648af9"/>
+                    </REFOBJ>
+                  </LINK>
+                </DEPENDENCIES>
+              </OBJECT>
+            </COMP>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

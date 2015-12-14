@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="&lt;start&gt;" version="3">
+  <DEPS>
+    <ID name="&lt;start&gt;" mc="DataType" uid="f73d1a34-0e97-4e7c-b380-407967d01a1f"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="&lt;start&gt;" mc="DataType" uid="f73d1a34-0e97-4e7c-b380-407967d01a1f"/>
+    <PID name="Basic VDM Types" mc="Package" uid="efdcc0fe-d2b9-42ed-b6f0-d81e876ad5f0"/>
+    <ATTRIBUTES>
+      <ATT name="IsElementary">true</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[<start>]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

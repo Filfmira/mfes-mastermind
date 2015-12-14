@@ -5,25 +5,25 @@ types
 values
 -- TODO Define values here
 instance variables
-	private equipas : set of String;
-	inv card equipas >= 2 and (card equipas) mod 2 = 0; --numero par de equipas.
+	private jogadores : set of String;
+	inv card jogadores >= 2 and (card jogadores) mod 2 = 0; --numero par de equipas.
 
 	private jogos : set of Jogo := {};
-	inv forall jogo in set jogos & jogo.getEquipas() subset equipas;
+	inv forall jogo in set jogos & jogo.getJogadores() subset jogadores;
 
 operations
 
 	public Campeonato: set of String ==> Campeonato
 	Campeonato(eqs) == (
-		equipas := eqs;
+		jogadores := eqs;
 	)
 	pre card eqs >= 2 and (card eqs) mod 2 = 0
-	post equipas = eqs;
+	post jogadores = eqs;
 	
-	pure public getEquipas: () ==> set of String
-	getEquipas() ==
-		return equipas
-	post RESULT = equipas;
+	pure public getJogadores: () ==> set of String
+	getJogadores() ==
+		return jogadores
+	post RESULT = jogadores;
 
 	
 	public getJogos: () ==> set of Jogo
@@ -33,11 +33,11 @@ operations
 	post RESULT = jogos;
 	
 	public novoJogoAleatorio: String * String ==> Jogo
-	novoJogoAleatorio(equipa1, equipa2) == (
+	novoJogoAleatorio(jog1, jog2) == (
 
 		dcl jogo : Jogo := new Jogo(
-			{equipa1 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave),
-			 equipa2 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave)},
+			{jog1 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave),
+			 jog2 |-> Cor`gerarSequenciaDeCores(Tabuleiro`comprimentoChave)},
 			self);
 
 		jogos := jogos union {jogo};
@@ -45,8 +45,8 @@ operations
 		return jogo;
 
 	)
-	pre {equipa1, equipa2} subset equipas and
-		{equipa1, equipa2} not in set getEquipasJogos()
+	pre {jog1, jog2} subset jogadores and
+		{jog1, jog2} not in set getJogadoresJogos()
 	post RESULT in set jogos;
 	
 	
@@ -60,60 +60,73 @@ operations
 		return g;
 
 	)
-	pre dom chaves subset equipas and
-		dom chaves not in set getEquipasJogos() and
+	pre dom chaves subset jogadores and
+		dom chaves not in set getJogadoresJogos() and
 		forall solution in set rng chaves & len solution = Tabuleiro`comprimentoChave
 	post RESULT in set jogos;
 	
 	
-	public adicionarEquipas : set of String ==> ()
-	adicionarEquipas(eqs) == (
-		equipas := equipas union eqs;
+	public adicionarJogadores : set of String ==> ()
+	adicionarJogadores(eqs) == (
+		jogadores := jogadores union eqs;
 	)
-	pre (eqs inter equipas = {}) and (card eqs) mod 2 = 0
-	post equipas = equipas~ union eqs;
+	pre (eqs inter jogadores = {}) and (card eqs) mod 2 = 0
+	post jogadores = jogadores~ union eqs;
 	
 	
 	-- em cada jogo, o jogador que está a tentar adivinhar
 	-- ganha tantos pontos, quantas tentativas não usou.
 	public getPontuacao : String ==> nat
-	getPontuacao (equipa) == (
-		dcl jogosFeitos : set of Jogo := jogosEquipa(equipa),
+	getPontuacao (jogador) == (
+		dcl jogosFeitos : set of Jogo := jogosJogador(jogador),
 			score : nat := 0;
 			
-			for tabuleiro in getTabuleirosJogados(jogosFeitos, equipa) do
+			for tabuleiro in getTabuleirosJogados(jogosFeitos, jogador) do
 				score := score + Tabuleiro`maxNumeroTentativas - len tabuleiro.getTentativas();
 
 			return score;
 	)
-	pre equipa in set equipas;
+	pre jogador in set jogadores;
+	
+	
+	
+	public getRankJogador : String ==> nat
+	getRankJogador (jogador) == (
+		dcl pontuacoes : map String to nat := getPontuacoes();
+		dcl numMelhores : nat := 0;
+		for all jog in set jogadores do
+			if pontuacoes(jog) > pontuacoes(jogador) then
+				numMelhores := numMelhores + 1;
+		numMelhores := numMelhores + 1;
+		return numMelhores;
+	);
 	
 	
 	-- recebe os jogos jogados por uma equipa
 	-- retorna os tabuleiros que lhe correspondem em cada jogo
 	public 	getTabuleirosJogados : set of Jogo * String ==> seq of Tabuleiro
-	getTabuleirosJogados (jogos, equipa) == (
+	getTabuleirosJogados (jogos, jogador) == (
 		dcl ret : seq of Tabuleiro := [] ;
 		for all jogo in set jogos do
-			ret := [jogo.getTabuleiroEquipa(equipa)] ^ ret;	
+			ret := [jogo.getTabuleiroJogador(jogador)] ^ ret;	
 		return ret;
 	)
-	pre equipa in set equipas and
-		forall jogo in set jogos & equipa in set jogo.getEquipas();
+	pre jogador in set jogadores and
+		forall jogo in set jogos & jogador in set jogo.getJogadores();
 	
 	
 	-- retorna pares de equipas que jogaram 
-	pure public getEquipasJogos: () ==> set of set of String
-	getEquipasJogos () ==
-		return {jogo.getEquipas() | jogo in set jogos}
+	pure public getJogadoresJogos: () ==> set of set of String
+	getJogadoresJogos () ==
+		return {jogo.getJogadores() | jogo in set jogos}
 	post jogos = {} => RESULT = {};
 
 	--------------------------------------------
-	public jogosEquipa : String ==> set of Jogo
-	jogosEquipa (equipa) ==
-		return {jogo | jogo in set jogos & equipa in set jogo.getEquipas()}
+	public jogosJogador : String ==> set of Jogo
+	jogosJogador (jogador) ==
+		return {jogo | jogo in set jogos & jogador in set jogo.getJogadores()}
 	post forall jogo in set RESULT
-		& equipa in set jogo.getEquipas();
+		& jogador in set jogo.getJogadores();
 		
 	--------------------------------------------
 	public getTentativasVencedor : () ==> nat
@@ -121,24 +134,24 @@ operations
 		dcl pontuacoes : map String to nat := getPontuacoes();
 		dcl vencedor : map String to nat := maximumValue(pontuacoes);
 		let x in set dom vencedor in
-			return getTentativasEquipa(x)
+			return getTentativasJogador(x)
 	);
 
 	--------------------------------------------
 	public getPontuacoes : () ==> map String to nat
 	getPontuacoes () ==
-		return { equipa |-> getPontuacao(equipa) | equipa in set equipas };
+		return { jogador |-> getPontuacao(jogador) | jogador in set jogadores };
 		
 	--------------------------------------------	
-	public getTentativasEquipa : String ==> nat
-	getTentativasEquipa (equipa) ==
+	public getTentativasJogador : String ==> nat
+	getTentativasJogador (jogador) ==
 	(
 		dcl numTentativas : nat := 0;
-		let jogo in set jogosEquipa(equipa) in
-			numTentativas := numTentativas + jogo.getTabuleiroEquipa(equipa).numTentativasFeitas();
+		let jogo in set jogosJogador(jogador) in
+			numTentativas := numTentativas + jogo.getTabuleiroJogador(jogador).numTentativasFeitas();
 		return numTentativas;
 	)
-	pre equipa in set equipas;
+	pre jogador in set jogadores;
 	
 	--------------------------------------------	
 	private maximumValue : map String to nat ==> map String to nat  

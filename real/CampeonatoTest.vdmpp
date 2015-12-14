@@ -14,8 +14,9 @@ operations
 		testNovoJogo();
 		testTentativasVencedor();
 		testAdicionarNovoJogoAleatorio();
-		testAdicionarEquipas();
-		testGetEquipasJogos();
+		testAdicionarJogadores();
+		testGetJogadoresJogos();
+		testRankJogador();
 	);
 	
 	
@@ -44,8 +45,8 @@ operations
 				"Mira" |-> ['f', 'e', 'd', 'c']
 			});
 			
-		dcl tabuleiro1 : Tabuleiro := jogo.getTabuleiroEquipa("Bandeira");
-		dcl tabuleiro2 : Tabuleiro := jogo.getTabuleiroEquipa("Mira");
+		dcl tabuleiro1 : Tabuleiro := jogo.getTabuleiroJogador("Bandeira");
+		dcl tabuleiro2 : Tabuleiro := jogo.getTabuleiroJogador("Mira");
 		
 		tabuleiro1.fazerJogada(['a', 'b', 'c', 'd']);
 		tabuleiro1.fazerJogada(['d', 'e', 'f', 'f']);
@@ -62,44 +63,89 @@ operations
 	(
 		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
 		dcl jogo : Jogo := campeonato.novoJogoAleatorio("Bandeira", "Mira");
-		dcl equipas : set of String := {"Bandeira","Mira"};
+		dcl jogadores : set of String := {"Bandeira","Mira"};
 		-- testar se o número de jogos passou para 1
 		assertEqual(1, card campeonato.getJogos());
 		
 		-- testar se as equipas adicionadas são as pretendidas
-		assertEqual(equipas, jogo.getEquipas());
+		assertEqual(jogadores, jogo.getJogadores());
 	
 		IO`println("Passou testAdicionarNovoJogoAleatorio");
 	);
 	
-	static public testAdicionarEquipas : () ==> ()
-	testAdicionarEquipas () == 
+	static public testAdicionarJogadores : () ==> ()
+	testAdicionarJogadores () == 
 	(
 		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira"});
 		
 		-- testar se o número de equipas inicial é 2
-		assertEqual(2, card campeonato.getEquipas());
+		assertEqual(2, card campeonato.getJogadores());
 		
-		campeonato.adicionarEquipas({"FilipeDeBraga", "Pires"});
+		campeonato.adicionarJogadores({"FilipeDeBraga", "Pires"});
 		-- testar se o número de equipas passou para 4
-		assertEqual(4, card campeonato.getEquipas());
+		assertEqual(4, card campeonato.getJogadores());
 	
-		IO`println("Passou testAdicionarEquipas");
+		IO`println("Passou testAdicionarJogadores");
 	);
 	
-	static public testGetEquipasJogos : () ==> ()
-	testGetEquipasJogos () ==
+	static public testGetJogadoresJogos : () ==> ()
+	testGetJogadoresJogos () ==
 	(
 		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
 		dcl jogo1 : Jogo := campeonato.novoJogoAleatorio("Bandeira", "Mira");
 		dcl jogo2 : Jogo := campeonato.novoJogoAleatorio("FilipeDeBraga", "Pires");
-		dcl equipas : set of set of String := {{"Bandeira","Mira"},{"FilipeDeBraga", "Pires"}};
+		dcl jogadores : set of set of String := {{"Bandeira","Mira"},{"FilipeDeBraga", "Pires"}};
 		
-		assertEqual(equipas, campeonato.getEquipasJogos());
+		assertEqual(jogadores, campeonato.getJogadoresJogos());
 		
 		IO`println("Passou testGetEquipasJogos");
-	)
+	);
 	
+	static public testRankJogador : () ==> () 
+	testRankJogador () ==
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
+		dcl jogo1 : Jogo := campeonato.novoJogo(
+		 {
+		 		"Bandeira" |-> ['a', 'b', 'c', 'd'], 
+				"Mira" |-> ['f', 'e', 'd', 'c']
+			});
+			
+		dcl tabuleiro1 : Tabuleiro := jogo1.getTabuleiroJogador("Bandeira");
+		dcl tabuleiro2 : Tabuleiro := jogo1.getTabuleiroJogador("Mira");
+		
+		dcl jogo2 : Jogo := campeonato.novoJogo(
+		 {
+		 		"FilipeDeBraga" |-> ['a', 'b', 'c', 'd'], 
+				"Pires" |-> ['f', 'e', 'd', 'c']
+			});
+			
+		dcl tabuleiro3 : Tabuleiro := jogo2.getTabuleiroJogador("FilipeDeBraga");
+		dcl tabuleiro4 : Tabuleiro := jogo2.getTabuleiroJogador("Pires");
+		
+		tabuleiro1.fazerJogada(['a', 'b', 'c', 'd']);
+		tabuleiro1.fazerJogada(['d', 'e', 'f', 'f']);
+		tabuleiro1.fazerJogada(['f', 'e', 'd', 'c']);
+		
+		tabuleiro2.fazerJogada(['a', 'b', 'c', 'd']);
+		
+		
+		tabuleiro3.fazerJogada(['a', 'b', 'c', 'd']);
+		tabuleiro3.fazerJogada(['d', 'e', 'f', 'f']);
+		tabuleiro3.fazerJogada(['d', 'e', 'f', 'f']);
+		tabuleiro3.fazerJogada(['f', 'e', 'd', 'c']);
+		
+		tabuleiro4.fazerJogada(['b', 'b', 'c', 'd']);
+		tabuleiro4.fazerJogada(['a', 'b', 'c', 'd']);
+		
+		assertEqual(1, campeonato.getRankJogador("Mira"));
+		assertEqual(2, campeonato.getRankJogador("Pires"));
+		assertEqual(3, campeonato.getRankJogador("Bandeira"));
+		assertEqual(4, campeonato.getRankJogador("FilipeDeBraga"));
+		
+		IO`println("Passou testRankJogador");
+		
+	);
 	
 	
 	

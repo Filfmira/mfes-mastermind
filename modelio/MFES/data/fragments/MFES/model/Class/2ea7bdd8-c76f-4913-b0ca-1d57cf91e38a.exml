@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="String" version="3">
+  <DEPS>
+    <ID name="String" mc="Class" uid="2ea7bdd8-c76f-4913-b0ca-1d57cf91e38a"/>
+    <EXTID name="String" mc="Class" uid="4c61c4ec-0475-4f44-95b9-68f6026abaf5"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="String" mc="Class" uid="2ea7bdd8-c76f-4913-b0ca-1d57cf91e38a"/>
+    <PID name="MyTestCase" mc="Class" uid="f2c6df94-21de-4c09-9481-64ce9d637e1a"/>
+    <ATTRIBUTES>
+      <ATT name="IsActive">false</ATT>
+      <ATT name="IsMain">false</ATT>
+      <ATT name="IsElementary">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[String]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Parent">
+        <OBJECT>
+          <ID name="" mc="Generalization" uid="06184d28-26a1-4fb1-9f3e-f746ccb373d8"/>
+          <PID name="String" mc="Class" uid="2ea7bdd8-c76f-4913-b0ca-1d57cf91e38a"/>
+          <ATTRIBUTES>
+            <ATT name="Discriminator"></ATT>
+            <ATT name="Name"></ATT>
+            <ATT name="status">1970354901745664</ATT>
+          </ATTRIBUTES>
+          <DEPENDENCIES>
+            <LINK relation="SuperType">
+              <ID name="String" mc="Class" uid="4c61c4ec-0475-4f44-95b9-68f6026abaf5"/>
+            </LINK>
+          </DEPENDENCIES>
+        </OBJECT>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

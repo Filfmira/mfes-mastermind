@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MFES" version="3">
+  <DEPS>
+    <ID name="MFES" mc="DiagramSet" uid="f1f83cce-e59f-4448-a7cd-01d066e51b2f"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="MFES" mc="DiagramSet" uid="f1f83cce-e59f-4448-a7cd-01d066e51b2f"/>
+    <PID name="MFES" mc="Project" uid="54958278-fd21-424c-b3e9-a20e58a3e029"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[MFES]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
