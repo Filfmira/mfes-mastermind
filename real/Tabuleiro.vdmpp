@@ -36,23 +36,6 @@ operations
 		post chave = chaveP and tentativas = [];
 
 
-		-- Constructor needed to recreate a board from the information of a file
-		public Tabuleiro : seq1 of Cor`Cor * seq of (seq1 of Cor`Cor) ==> Tabuleiro
-		Tabuleiro (chaveP, tentativasP) == (
-			chave := chaveP;
-			tentativas := tentativasP;
-		)
-		pre len chaveP = comprimentoChave and
-			len tentativasP <= maxNumeroTentativas and
-			forall tentativa in set elems tentativasP & len tentativa = comprimentoChave
-
-		post chave = chaveP and
-			-- All elements of "attempts" need to be in the same position of the
-			-- elements of "savedAttempts"
-			numCoresSitioCerto[seq1 of Cor`Cor](tentativas, tentativasP) = len tentativas;
-
-
-
 		public numTentativasRestantes : () ==> nat
 			numTentativasRestantes () == return maxNumeroTentativas - len tentativas
 		pre (len tentativas) <= maxNumeroTentativas

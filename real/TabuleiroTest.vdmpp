@@ -18,6 +18,7 @@ operations
 			testTentativa3();
 			testCoresSitiosCertos();
 			testCoresSitiosErrados();
+			testGetMaxNumTentativas();
 		);
 
 	static public testConstrutor1 : () ==> ()
@@ -167,6 +168,13 @@ operations
 			IO`println("Passou testCoresSitiosErrados");
 		);
 		
+		static public testGetMaxNumTentativas: () ==> ()
+		testGetMaxNumTentativas () ==
+		(
+			dcl tabuleiro : Tabuleiro := new Tabuleiro(['d', 'c', 'b', 'a']);
+			assertEqual(9, tabuleiro.getMaxNumeroTentativas());
+			IO`println("Passou testMaxNumTentativas");
+		);
     
 functions
 -- TODO Define functiones here

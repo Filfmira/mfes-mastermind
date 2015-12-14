@@ -11,13 +11,31 @@ operations
 	testTodos () == (
 		IO`println("#######################################");
 		IO`println("Testes Campeonato:");
-		testConstrutor1();
-
+		testNovoJogo();
+		testTentativasVencedor();
+		testAdicionarNovoJogoAleatorio();
+		testAdicionarEquipas();
+		testGetEquipasJogos();
 	);
 	
 	
-	static public testConstrutor1 : () ==> ()
-	testConstrutor1 () ==
+	static public testNovoJogo : () ==> ()
+	testNovoJogo () ==
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
+		dcl jogo : Jogo := campeonato.novoJogo(
+		 {
+		 		"Bandeira" |-> ['a', 'b', 'c', 'd'], 
+				"Mira" |-> ['f', 'e', 'd', 'c']
+			});
+
+				
+		assertEqual(1, card campeonato.getJogos());
+		IO`println("Passou testNovoJogo");
+	);
+	
+	static public testTentativasVencedor : () ==> ()
+	testTentativasVencedor () ==
 	(
 		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
 		dcl jogo : Jogo := campeonato.novoJogo(
@@ -36,8 +54,54 @@ operations
 		tabuleiro2.fazerJogada(['a', 'b', 'c', 'd']);
 		
 		assertEqual(1, campeonato.getTentativasVencedor());
-		IO`println("Passou testConstrutor1");
+		IO`println("Passou testTentativasVencedor");
 	);
+	
+	static public testAdicionarNovoJogoAleatorio : () ==> ()
+	testAdicionarNovoJogoAleatorio () == 
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
+		dcl jogo : Jogo := campeonato.novoJogoAleatorio("Bandeira", "Mira");
+		dcl equipas : set of String := {"Bandeira","Mira"};
+		-- testar se o número de jogos passou para 1
+		assertEqual(1, card campeonato.getJogos());
+		
+		-- testar se as equipas adicionadas são as pretendidas
+		assertEqual(equipas, jogo.getEquipas());
+	
+		IO`println("Passou testAdicionarNovoJogoAleatorio");
+	);
+	
+	static public testAdicionarEquipas : () ==> ()
+	testAdicionarEquipas () == 
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira"});
+		
+		-- testar se o número de equipas inicial é 2
+		assertEqual(2, card campeonato.getEquipas());
+		
+		campeonato.adicionarEquipas({"FilipeDeBraga", "Pires"});
+		-- testar se o número de equipas passou para 4
+		assertEqual(4, card campeonato.getEquipas());
+	
+		IO`println("Passou testAdicionarEquipas");
+	);
+	
+	static public testGetEquipasJogos : () ==> ()
+	testGetEquipasJogos () ==
+	(
+		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
+		dcl jogo1 : Jogo := campeonato.novoJogoAleatorio("Bandeira", "Mira");
+		dcl jogo2 : Jogo := campeonato.novoJogoAleatorio("FilipeDeBraga", "Pires");
+		dcl equipas : set of set of String := {{"Bandeira","Mira"},{"FilipeDeBraga", "Pires"}};
+		
+		assertEqual(equipas, campeonato.getEquipasJogos());
+		
+		IO`println("Passou testGetEquipasJogos");
+	)
+	
+	
+	
 	
 functions
 -- TODO Define functiones here

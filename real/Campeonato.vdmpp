@@ -103,7 +103,7 @@ operations
 	
 	
 	-- retorna pares de equipas que jogaram 
-	pure private getEquipasJogos: () ==> set of set of String
+	pure public getEquipasJogos: () ==> set of set of String
 	getEquipasJogos () ==
 		return {jogo.getEquipas() | jogo in set jogos}
 	post jogos = {} => RESULT = {};
