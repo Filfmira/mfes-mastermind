@@ -10,6 +10,7 @@ instance variables
 	inv card (dom tabuleiros) = 2;
 	
 operations
+	--Construtor que recebe um map equipa->chave e um campeonato e retorna o jogo criado
 	public Jogo : map String to seq1 of Cor`Cor * Campeonato ==> Jogo
 	Jogo (chaves, campeonato) == (
 		let {jogador1, jogador2} = dom chaves in
@@ -27,27 +28,29 @@ operations
 			--chave do tabuleiro da  minha equipa == chave gerada pelo adversario
 
 
-	-- Constructor needed to recreate a game from the information of a file
+	-- Construtor que recebe um map com o nome da equipa -> Tabuleiro e retorna o Jogo criado
 	public Jogo : map String to Tabuleiro ==> Jogo
-	Jogo (tabuleirosFicheiro) ==
-		tabuleiros := tabuleirosFicheiro
-	pre card (dom tabuleirosFicheiro) = 2
-	post tabuleiros = tabuleirosFicheiro;
+	Jogo (tabuleirosP) ==
+		tabuleiros := tabuleirosP
+	pre card (dom tabuleirosP) = 2
+	post tabuleiros = tabuleirosP;
 
+	--Retorna o map jogador->tabuleiro
 	public getTabuleiros : () ==> map String to Tabuleiro
 	getTabuleiros () == return tabuleiros
 	post RESULT = tabuleiros;
 
+	--Retorna o set de jogadores de um jogo
 	pure public getJogadores : () ==> set of String
 	getJogadores () == return dom tabuleiros
 	post RESULT = dom tabuleiros;
 
-
+	-- Retorna o tabuleiro do jogador
 	public getTabuleiroJogador : String ==> Tabuleiro
 	getTabuleiroJogador (jogador) == return tabuleiros(jogador)
 	post RESULT = tabuleiros(jogador);
 
-
+	-- Devolve o Tabuleiro do jogador adversário
 	public getTabuleiroAdversario : String ==> Tabuleiro
 	getTabuleiroAdversario (jogador) ==
 		let adversario in set (dom tabuleiros)\{jogador}

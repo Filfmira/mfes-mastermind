@@ -13,6 +13,7 @@ instance variables
 
 operations
 
+	--Construtor que recebe um set de jogadores e retorna o campeonato criado
 	public Campeonato: set of String ==> Campeonato
 	Campeonato(eqs) == (
 		jogadores := eqs;
@@ -20,18 +21,20 @@ operations
 	pre card eqs >= 2 and (card eqs) mod 2 = 0
 	post jogadores = eqs;
 	
+	--Retorna o set de jogadores de um campeonato
 	pure public getJogadores: () ==> set of String
 	getJogadores() ==
 		return jogadores
 	post RESULT = jogadores;
 
-	
+	--Retorna o set de jogos de um campeonato
 	public getJogos: () ==> set of Jogo
 	getJogos() == (
 		return jogos;
 	)
 	post RESULT = jogos;
 	
+	--Recebe dois jogadores, gera um jogo com chaves aleatorias e retorna esse jogo
 	public novoJogoAleatorio: String * String ==> Jogo
 	novoJogoAleatorio(jog1, jog2) == (
 
@@ -50,6 +53,7 @@ operations
 	post RESULT in set jogos;
 	
 	
+	--Recebe um map jogador->chave, gera o Jogo com estes valores e retorna esse jogo
 	public novoJogo : map String to (seq of Cor`Cor) ==> Jogo
 	novoJogo(chaves) == (
 
@@ -66,6 +70,7 @@ operations
 	post RESULT in set jogos;
 	
 	
+	--Recebe um set de jogadores e adiciona-os ao set de jogadores do campeonato
 	public adicionarJogadores : set of String ==> ()
 	adicionarJogadores(eqs) == (
 		jogadores := jogadores union eqs;
@@ -74,7 +79,8 @@ operations
 	post jogadores = jogadores~ union eqs;
 	
 	
-	-- em cada jogo, o jogador que está a tentar adivinhar
+	-- Retorna a pontuação de um jogador.
+	-- Em cada jogo, o jogador que está a tentar adivinhar
 	-- ganha tantos pontos, quantas tentativas não usou.
 	public getPontuacao : String ==> nat
 	getPontuacao (jogador) == (
@@ -89,7 +95,7 @@ operations
 	pre jogador in set jogadores;
 	
 	
-	
+	--Retorna o lugar do jogador na classificação do campeonato
 	public getRankJogador : String ==> nat
 	getRankJogador (jogador) == (
 		dcl pontuacoes : map String to nat := getPontuacoes();
@@ -102,8 +108,8 @@ operations
 	);
 	
 	
-	-- recebe os jogos jogados por uma equipa
-	-- retorna os tabuleiros que lhe correspondem em cada jogo
+	-- Recebe os jogos jogados por uma equipa
+	-- Retorna os tabuleiros que lhe correspondem em cada jogo
 	public 	getTabuleirosJogados : set of Jogo * String ==> seq of Tabuleiro
 	getTabuleirosJogados (jogos, jogador) == (
 		dcl ret : seq of Tabuleiro := [] ;
@@ -115,20 +121,20 @@ operations
 		forall jogo in set jogos & jogador in set jogo.getJogadores();
 	
 	
-	-- retorna pares de equipas que jogaram 
+	-- Retorna pares de equipas que jogaram 
 	pure public getJogadoresJogos: () ==> set of set of String
 	getJogadoresJogos () ==
 		return {jogo.getJogadores() | jogo in set jogos}
 	post jogos = {} => RESULT = {};
 
-	--------------------------------------------
+	--Retorna um set de jogos já jogados por um jogador
 	public jogosJogador : String ==> set of Jogo
 	jogosJogador (jogador) ==
 		return {jogo | jogo in set jogos & jogador in set jogo.getJogadores()}
 	post forall jogo in set RESULT
 		& jogador in set jogo.getJogadores();
 		
-	--------------------------------------------
+	--Retorna o numero de tentativas de todos os jogos jogados pelo vencedor
 	public getTentativasVencedor : () ==> nat
 	getTentativasVencedor () == (
 		dcl pontuacoes : map String to nat := getPontuacoes();
@@ -137,12 +143,12 @@ operations
 			return getTentativasJogador(x)
 	);
 
-	--------------------------------------------
+	--Retorna o numero de tentativas de todos os jogos jogados pelo vencedor
 	public getPontuacoes : () ==> map String to nat
 	getPontuacoes () ==
 		return { jogador |-> getPontuacao(jogador) | jogador in set jogadores };
 		
-	--------------------------------------------	
+	--Retorna o numero de tentativas de todos os jogos jogados por esse jogador
 	public getTentativasJogador : String ==> nat
 	getTentativasJogador (jogador) ==
 	(
@@ -153,7 +159,8 @@ operations
 	)
 	pre jogador in set jogadores;
 	
-	--------------------------------------------	
+	--Recebe um map jogador->pontuação com todos os jogadores e respetiva pontuacao
+	--Retorna um map com jogadorVencedor->pontuaçãoMaisAlta
 	private maximumValue : map String to nat ==> map String to nat  
 		maximumValue(mapa) == (
 			if card dom mapa = 1 then

@@ -64,6 +64,8 @@ operations
 		dcl campeonato : Campeonato := new Campeonato({"Bandeira", "Mira", "FilipeDeBraga", "Pires"});
 		dcl jogo : Jogo := campeonato.novoJogoAleatorio("Bandeira", "Mira");
 		dcl jogadores : set of String := {"Bandeira","Mira"};
+		
+		IO`println(jogo.getTabuleiroJogador("Bandeira").getChave());
 		-- testar se o número de jogos passou para 1
 		assertEqual(1, card campeonato.getJogos());
 		

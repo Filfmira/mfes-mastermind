@@ -4,7 +4,7 @@ class Utilities
 
 	functions
 
-		-- Return the minimum of two values
+		-- Retorna o numero minimo entre dois valores
 		static public min : nat * nat -> nat
 			min(a, b) ==
 				if a <= b then a

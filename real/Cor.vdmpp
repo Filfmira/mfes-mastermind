@@ -9,6 +9,8 @@ instance variables
 		static public Cores : set of Cor := {'a', 'b', 'c', 'd', 'e', 'f'};
 		
 operations		
+
+		--Retorna uma seq1 de cores com tamanho "tamanho"
 		static public gerarSequenciaDeCores: nat1 ==> seq1 of char
 		gerarSequenciaDeCores(tamanho) == (
 
@@ -21,10 +23,13 @@ operations
 		post len RESULT = tamanho and
 			forall color in set elems RESULT & color in set Cores;
 
+		--Retorna um char aleatorio da gama de cores
 		static private corAleatoria: () ==> char
 		corAleatoria() == (
-			||(return 'a', return 'b', return 'c', return 'd', return 'e', return 'f');
-		)
+		dcl coresSet : seq of char :=['a', 'b', 'c', 'd', 'e', 'f'];
+		
+		return coresSet(MATH`rand(6)+1);
+	)
 		post RESULT in set Cores;
 		
 functions

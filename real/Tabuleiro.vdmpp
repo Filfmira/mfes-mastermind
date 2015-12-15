@@ -16,17 +16,17 @@ instance variables
 	public static maxNumeroTentativas : nat1 := 9;
 	
 operations
-
+		
+		--Construtor que gera uma chave aleatoria e inicializa as tentativas vazias e retorna o tabuleiro
 		public Tabuleiro : () ==> Tabuleiro
 		Tabuleiro() == (
-
 			chave := Cor`gerarSequenciaDeCores(comprimentoChave);
 			tentativas := [];
-
 		)
 		post len chave = comprimentoChave and tentativas = [];
 
 
+		--Construtor que recebe uma chave, inicializa as tentativas a vazio e retorna o tabuleiro
 		public Tabuleiro : seq1 of Cor`Cor ==> Tabuleiro
 		Tabuleiro (chaveP) == (
 			chave := chaveP;
@@ -35,18 +35,18 @@ operations
 		pre len chaveP = comprimentoChave
 		post chave = chaveP and tentativas = [];
 
-
+		--Retorna o número de tentativas restantes que um jogador tem para adivinhar a chave
 		public numTentativasRestantes : () ==> nat
 			numTentativasRestantes () == return maxNumeroTentativas - len tentativas
 		pre (len tentativas) <= maxNumeroTentativas
 		post RESULT = maxNumeroTentativas - len tentativas;
 
-
+		--Retorna o número de tentativas já feitas pelo jogador
 		public numTentativasFeitas : () ==> nat
 			numTentativasFeitas() == return len tentativas
 		post RESULT = len tentativas;
 
-
+		--Recebe uma sequencia de cores e adiciona-a à sequencia de tentativas
 		public fazerJogada : seq1 of Cor`Cor ==> ()
 			fazerJogada (tentativa) == tentativas := tentativas ^ [tentativa]
 		pre len tentativa = comprimentoChave and
@@ -54,28 +54,28 @@ operations
 		post tentativas = tentativas~ ^ [tentativa]; --tentativas~ -> (sql) OLD.tentativas
 
 
-		-- Return true if the correct code has been found
+		-- Retorna true se a chave tiver sido encontrada na sequencia de tentativas
 		pure public isChaveEncontrada : () ==> bool
 			isChaveEncontrada () == return chave in set elems tentativas
 		post chave in set elems tentativas => RESULT = true;
 
-
+		-- Retorna true se a chave tiver sido encontrada ou se o numero de tentativas exceder o maximo
 		pure public gameOver : () ==> bool
 			gameOver () == return isChaveEncontrada() or len tentativas = maxNumeroTentativas
 		post RESULT = (isChaveEncontrada() or len tentativas = maxNumeroTentativas);
 
-
+		--Recebe uma sequencia de cores e retorna o numero de cores nos sitios certos comparando
+		--com a chave
 		public calcularCoresSitiosCertos : seq of Cor`Cor ==> nat
 			calcularCoresSitiosCertos (tentativa) ==
 				return numCoresSitioCerto[Cor`Cor](tentativa, chave)
 		pre len tentativa = len chave
 		post RESULT <= len chave;
 
-
+		--Recebe uma sequencia de cores e retorna o numero de cores nos sitios errados comparando
+		--com a chave
 		public calcularCoresSitiosErrados : seq of Cor`Cor ==> nat
 			calcularCoresSitiosErrados (tentativa) ==
-			-- Just a temporary variable to hold the value of the sum expression
-			-- (see previous URL)
 				(dcl temp : nat := 0;
 					for all color in set Cor`Cores do
 						temp := temp +
@@ -87,27 +87,26 @@ operations
 		pre len tentativa = len chave
 		post RESULT <= len chave;
 
-
+		--Retorna a chave (solução) do tabuleiro
 		pure public getChave : () ==> seq1 of Cor`Cor
 			getChave () == return chave
 		post RESULT = chave;
 
-
+		--Retorna a sequencia de tentaticas já feitas pelo jogador
 		public getTentativas : () ==> seq of (seq1 of Cor`Cor)
 			getTentativas () == return tentativas
 		post RESULT = tentativas;
 
-
+		--Retorna o numero máximo de tentivas
 		public getMaxNumeroTentativas: () ==> nat1
 			getMaxNumeroTentativas () == return maxNumeroTentativas
 		post RESULT = maxNumeroTentativas;
 
 
 functions
-		-- Return the number of elements in the sequence that are a match both
-		-- in value and in position. For example: [1,2,3,4,5] and [4,4,3,5,2]
-		-- only has one element that matches both in value and in position (the
-		-- element 3).
+
+		-- Recebe duas sequencias de cores e retorna o numero de elementos na sequencia1 que
+		-- sejam iguais em valor e posição à sequencia2
 		private numCoresSitioCerto[@T] : seq of @T * seq of @T -> nat
 			numCoresSitioCerto (firstSeq, secondSeq) ==
 				if firstSeq = [] then
@@ -119,7 +118,7 @@ functions
 			pre (len firstSeq) = (len secondSeq)
 			post firstSeq = [] => RESULT = 0;
 
-		-- Return the number of times the element appears in the sequence
+		-- Retorna o numero de vezes que um elemento aparece numa sequencia
 		private numOcurrencias[@T] : seq of @T * @T -> nat
 			numOcurrencias (sequence, element) ==
 				if sequence = [] then
