@@ -13,9 +13,11 @@ operations
 	--Construtor que recebe um map equipa->chave e um campeonato e retorna o jogo criado
 	public Jogo : map String to seq1 of Cor`Cor * Campeonato ==> Jogo
 	Jogo (chaves, campeonato) == (
-		let {jogador1, jogador2} = dom chaves in
-			tabuleiros := {jogador1 |-> new Tabuleiro(chaves(jogador2)),
-				jogador2 |-> new Tabuleiro(chaves(jogador1))};
+		dcl domMapSeq : seq of String := [];
+		for all x in set dom chaves do
+			domMapSeq := domMapSeq ^ [x];
+			tabuleiros := {domMapSeq(1) |-> new Tabuleiro(chaves(domMapSeq(2))),
+				domMapSeq(2) |-> new Tabuleiro(chaves(domMapSeq(1)))};
 		)
 	pre card (dom chaves) = 2 and
 		forall jogador in set dom chaves &
