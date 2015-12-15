@@ -56,7 +56,6 @@ public class CampeonatoTest extends MyTestCase {
                     "FilipeDeBraga", "Pires"));
         Jogo jogo = campeonato.novoJogoAleatorio("Bandeira", "Mira");
         VDMSet jogadores = SetUtil.set("Bandeira", "Mira");
-        IO.println(jogo.getTabuleiroJogador("Bandeira").getChave());
         assertEqual(1L, campeonato.getJogos().size());
         assertEqual(Utils.copy(jogadores), jogo.getJogadores());
         IO.println("Passou testAdicionarNovoJogoAleatorio");

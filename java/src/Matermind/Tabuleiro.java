@@ -65,9 +65,9 @@ public class Tabuleiro {
     public Number calcularCoresSitiosErrados(final String tentativa) {
         Number temp = 0L;
 
-        for (Iterator iterator_15 = Cor.Cores.iterator();
-                iterator_15.hasNext();) {
-            Character color = (Character) iterator_15.next();
+        for (Iterator iterator_20 = Cor.Cores.iterator();
+                iterator_20.hasNext();) {
+            Character color = (Character) iterator_20.next();
             temp = temp.longValue() +
                 Utilities.min(numOcurrencias(chave, color),
                     numOcurrencias(tentativa, color)).longValue();

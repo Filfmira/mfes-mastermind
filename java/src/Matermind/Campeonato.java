@@ -56,9 +56,9 @@ public class Campeonato {
         VDMSet jogosFeitos = jogosJogador(jogador);
         Number score = 0L;
 
-        for (Iterator iterator_12 = getTabuleirosJogados(Utils.copy(jogosFeitos),
-                    jogador).iterator(); iterator_12.hasNext();) {
-            Tabuleiro tabuleiro = (Tabuleiro) iterator_12.next();
+        for (Iterator iterator_16 = getTabuleirosJogados(Utils.copy(jogosFeitos),
+                    jogador).iterator(); iterator_16.hasNext();) {
+            Tabuleiro tabuleiro = (Tabuleiro) iterator_16.next();
             score = (score.longValue() +
                 Tabuleiro.maxNumeroTentativas.longValue()) -
                 tabuleiro.getTentativas().size();
@@ -71,9 +71,9 @@ public class Campeonato {
         VDMMap pontuacoes = getPontuacoes();
         Number numMelhores = 0L;
 
-        for (Iterator iterator_13 = jogadores.iterator();
-                iterator_13.hasNext();) {
-            String jog = (String) iterator_13.next();
+        for (Iterator iterator_17 = jogadores.iterator();
+                iterator_17.hasNext();) {
+            String jog = (String) iterator_17.next();
 
             if (((Number) Utils.get(pontuacoes, jog)).longValue() > ((Number) Utils.get(
                         pontuacoes, jogador)).longValue()) {
@@ -90,8 +90,8 @@ public class Campeonato {
         final String jogador) {
         VDMSeq ret = SeqUtil.seq();
 
-        for (Iterator iterator_14 = jogos_1.iterator(); iterator_14.hasNext();) {
-            Jogo jogo = (Jogo) iterator_14.next();
+        for (Iterator iterator_18 = jogos_1.iterator(); iterator_18.hasNext();) {
+            Jogo jogo = (Jogo) iterator_18.next();
             ret = SeqUtil.conc(SeqUtil.seq(jogo.getTabuleiroJogador(jogador)),
                     Utils.copy(ret));
         }
@@ -101,10 +101,10 @@ public class Campeonato {
 
     public VDMSet getJogadoresJogos() {
         VDMSet setCompResult_1 = SetUtil.set();
-        VDMSet set_7 = Utils.copy(jogos);
+        VDMSet set_8 = Utils.copy(jogos);
 
-        for (Iterator iterator_7 = set_7.iterator(); iterator_7.hasNext();) {
-            Jogo jogo = ((Jogo) iterator_7.next());
+        for (Iterator iterator_8 = set_8.iterator(); iterator_8.hasNext();) {
+            Jogo jogo = ((Jogo) iterator_8.next());
             setCompResult_1 = SetUtil.union(Utils.copy(setCompResult_1),
                     SetUtil.set(jogo.getJogadores()));
         }
@@ -114,10 +114,10 @@ public class Campeonato {
 
     public VDMSet jogosJogador(final String jogador) {
         VDMSet setCompResult_2 = SetUtil.set();
-        VDMSet set_9 = Utils.copy(jogos);
+        VDMSet set_10 = Utils.copy(jogos);
 
-        for (Iterator iterator_9 = set_9.iterator(); iterator_9.hasNext();) {
-            Jogo jogo = ((Jogo) iterator_9.next());
+        for (Iterator iterator_10 = set_10.iterator(); iterator_10.hasNext();) {
+            Jogo jogo = ((Jogo) iterator_10.next());
 
             if (SetUtil.inSet(jogador, jogo.getJogadores())) {
                 setCompResult_2 = SetUtil.union(Utils.copy(setCompResult_2),
@@ -154,10 +154,10 @@ public class Campeonato {
 
     public VDMMap getPontuacoes() {
         VDMMap mapCompResult_1 = MapUtil.map();
-        VDMSet set_10 = Utils.copy(jogadores);
+        VDMSet set_11 = Utils.copy(jogadores);
 
-        for (Iterator iterator_10 = set_10.iterator(); iterator_10.hasNext();) {
-            String jogador = ((String) iterator_10.next());
+        for (Iterator iterator_11 = set_11.iterator(); iterator_11.hasNext();) {
+            String jogador = ((String) iterator_11.next());
             mapCompResult_1 = MapUtil.munion(Utils.copy(mapCompResult_1),
                     MapUtil.map(new Maplet(jogador, getPontuacao(jogador))));
         }
